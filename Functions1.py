@@ -1,4 +1,3 @@
-```python id="krx3n2"
 import fastf1
 import streamlit as st
 import os
@@ -73,4 +72,3 @@ def get_results(
     except:
 
         return None
-```
