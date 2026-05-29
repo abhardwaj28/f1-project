@@ -1,8 +1,19 @@
+```python id="pljlwm"
 import fastf1
 import streamlit as st
+import os
+
+cache_dir = "cache"
+
+if not os.path.exists(
+    cache_dir
+):
+    os.makedirs(
+        cache_dir
+    )
 
 fastf1.Cache.enable_cache(
-    "./cache"
+    cache_dir
 )
 
 
@@ -30,16 +41,13 @@ def get_results(
     session
 ):
 
-    results = (
-        session.results[
-            [
-                "Position",
-                "Abbreviation",
-                "FullName",
-                "TeamName",
-                "Points"
-            ]
+    return session.results[
+        [
+            "Position",
+            "Abbreviation",
+            "FullName",
+            "TeamName",
+            "Points"
         ]
-    )
-
-    return results
+    ]
+```
