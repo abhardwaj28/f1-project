@@ -1,3 +1,4 @@
+```python id="krx3n2"
 import fastf1
 import streamlit as st
 import os
@@ -23,30 +24,53 @@ def load_session(
     session_type
 ):
 
-    session = (
-        fastf1.get_session(
-            year,
-            gp,
-            session_type
+    try:
+
+        session = (
+            fastf1.get_session(
+                year,
+                gp,
+                session_type
+            )
         )
-    )
 
-    session.load()
+        session.load(
+            telemetry=True,
+            weather=False,
+            messages=False
+        )
 
-    return session
+        return session
+
+    except Exception as e:
+
+        raise Exception(
+            f"Session failed "
+            f"to load: {e}"
+        )
 
 
 def get_results(
     session
 ):
 
-    return session.results[
-        [
-            "Position",
-            "Abbreviation",
-            "FullName",
-            "TeamName",
-            "Points"
-        ]
-    ]
+    try:
 
+        results = (
+            session.results[
+                [
+                    "Position",
+                    "Abbreviation",
+                    "FullName",
+                    "TeamName",
+                    "Points"
+                ]
+            ]
+        )
+
+        return results
+
+    except:
+
+        return None
+```
