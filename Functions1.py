@@ -1,4 +1,3 @@
-```python id="pljlwm"
 import fastf1
 import streamlit as st
 import os
@@ -50,4 +49,4 @@ def get_results(
             "Points"
         ]
     ]
-```
+
